@@ -1,0 +1,27 @@
+{
+  "name": "backend-chattingapp",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/fizzaabbas-dev/Backend-chattingApp#readme",
+  "bugs": {
+    "url": "https://github.com/fizzaabbas-dev/Backend-chattingApp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fizzaabbas-dev/Backend-chattingApp.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
+    "socket.io": "^4.8.3"
+  }
+}
