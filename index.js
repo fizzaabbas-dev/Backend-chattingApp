@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
-  // Join a room
+  
   socket.on("join", (roomId) => {
     socket.join(roomId);
   });
@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
     socket.leave(roomId);
   });
 
-//   Broadcast to room 
+ 
   socket.on("send", (message) => {
     console.log(message)
     socket.to(message.room).emit("message", message);
