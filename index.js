@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://backend-chattingapp-production.up.railway.app",
+    origin: "http://chatting-app-frontend-f0asc9u75-fizza123.vercel.app",
     methods: ["GET", "POST"],
     credentials: true
   }
