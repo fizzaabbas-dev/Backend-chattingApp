@@ -9,7 +9,7 @@ const server = http.createServer(app);
 
 app.use(
   cors({
-    origin: "https://chatting-app-frontend-f0asc9u75-fizza123.vercel.app",
+    origin: "https://chatting-app-frontend-sepia.vercel.app/",
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -17,7 +17,7 @@ app.use(
 
 const io = new Server(server, {
   cors: {
-    origin: "https:chatting-app-frontend-f0asc9u75-fizza123.vercel.app",
+    origin: "https://chatting-app-frontend-sepia.vercel.app/",
     methods: ["GET", "POST"],
     credentials: true,
   },
