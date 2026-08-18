@@ -6,31 +6,35 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: " http://chatting-app-frontend-one.vercel.app",
+    origin: "http://chatting-app-frontend-gicwlh4km-fizza123.vercel.app",
     methods: ["GET", "POST"],
     credentials: true
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("<h1>Hello from Realtime Socket Chat Server</h1>");
+});
+
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
-
+  // Join a room
   socket.on("join", (roomId) => {
     socket.join(roomId);
   });
-
   socket.on("leave", (roomId) => {
     socket.leave(roomId);
   });
 
-  // Broadcast message to everyone in the specific room
+//   Broadcast to room 
   socket.on("send", (message) => {
-    console.log("Message received:", message);
-    io.to(message.room).emit("message", message);
+    console.log(message)
+    socket.to(message.room).emit("message", message);
   });
 });
 
+const PORT = process.env.PORT || 5050;
 
-server.listen(5050, () => {
-  console.log("Server running on port:5050");
+server.listen(PORT, () => {
+  console.log(`listening on *:${PORT}`);
 });
