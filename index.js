@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "http://chatting-app-frontend-delta.vercel.app",
     methods: ["GET", "POST"],
     credentials: true
   }
@@ -29,7 +29,7 @@ io.on("connection", (socket) => {
 //   Broadcast to room 
   socket.on("send", (message) => {
     console.log(message)
-    socket.to(message.room).emit("message", message);
+    io.to(message.room).emit("message", message);
   });
 });
 
