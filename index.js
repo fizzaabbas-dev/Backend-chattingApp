@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://chatting-app-frontend-three.vercel.app",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"],
     credentials: true
   }
@@ -33,8 +33,6 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 5050;
-
-server.listen(PORT, () => {
-  console.log(`Server running on port:${PORT}`);
+server.listen(5050, () => {
+  console.log("Server running on port:5050");
 });
