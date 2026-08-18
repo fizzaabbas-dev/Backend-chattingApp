@@ -8,8 +8,8 @@ const io = new Server(server, {
   cors: {
     origin: "http://chatting-app-frontend-delta.vercel.app",
     methods: ["GET", "POST"],
-    credentials: true
-  }
+    credentials: true,
+  },
 });
 
 app.get("/", (req, res) => {
@@ -26,10 +26,10 @@ io.on("connection", (socket) => {
     socket.leave(roomId);
   });
 
-//   Broadcast to room 
+  //   Broadcast to room
   socket.on("send", (message) => {
-    console.log(message)
-    io.to(message.room).emit("message", message);
+    console.log(message);
+    socket.to(message.room).emit("message", message);
   });
 });
 
