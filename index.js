@@ -21,9 +21,10 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
+  // Yeh raha "a user connected" print statement
   console.log("a user connected", socket.id);
 
-  // Join a room (Handling both string or object if passed from frontend)
+  // Join a room
   socket.on("join", (data) => {
     const roomName = typeof data === "object" ? data.room : data;
     socket.join(roomName);
@@ -35,10 +36,9 @@ io.on("connection", (socket) => {
     console.log(`User left room: ${roomName}`);
   });
 
-  // Broadcast message to everyone in the room (including sender if needed, or use socket.to)
+  // Broadcast to room
   socket.on("send", (message) => {
     console.log("Message received:", message);
-    // io.to ensures everyone in the room gets the message
     io.to(message.room).emit("message", message);
   });
 });
