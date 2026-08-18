@@ -8,33 +8,29 @@ const io = new Server(server, {
   cors: {
     origin: "http://chatting-app-frontend-delta.vercel.app",
     methods: ["GET", "POST"],
-    credentials: true,
-  },
-});
-
-app.get("/", (req, res) => {
-  res.send("<h1>Hello from Realtime Socket Chat Server</h1>");
+    credentials: true
+  }
 });
 
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
-  // Join a room
+
   socket.on("join", (roomId) => {
     socket.join(roomId);
   });
+
   socket.on("leave", (roomId) => {
     socket.leave(roomId);
   });
 
-  //   Broadcast to room
+  // Broadcast message to everyone in the specific room
   socket.on("send", (message) => {
-    console.log(message);
-    socket.to(message.room).emit("message", message);
+    console.log("Message received:", message);
+    io.to(message.room).emit("message", message);
   });
 });
 
 const PORT = process.env.PORT || 5050;
-
 server.listen(PORT, () => {
   console.log(`Server running on port:${PORT}`);
 });
