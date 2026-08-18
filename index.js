@@ -8,8 +8,7 @@ const io = new Server(server, {
   cors: {
     origin: [
       "http://localhost:5173",
-      "https://chatting-app-frontend-bjlgbqa6t-fizza123.vercel.app",
-      "https://chatting-app-frontend-one.vercel.app"
+      "https://chatting-app-frontend-one.vercel.app" // Yahan apna exact Vercel wala link dalein jo browser me khula hai
     ],
     methods: ["GET", "POST"],
     credentials: true
@@ -21,7 +20,6 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  // Yeh raha "a user connected" print statement
   console.log("a user connected", socket.id);
 
   // Join a room
