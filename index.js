@@ -7,8 +7,8 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: [
-      "http://localhost:5173",
-      "https://chatting-app-frontend-one.vercel.app" // Yahan apna exact Vercel wala link dalein jo browser me khula hai
+      
+      "https://chatting-app-frontend-one.vercel.app" 
     ],
     methods: ["GET", "POST"],
     credentials: true
